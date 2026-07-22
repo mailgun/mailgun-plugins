@@ -1,0 +1,5 @@
+description = "Compare Mailgun delivery and engagement across multiple domains"
+
+prompt = """
+Ask for domains, region, date range, and comparison goal. Use consistent read-only analytics across domains. Compare delivery, failures, complaints, unsubscribes, engagement, provider/device/country splits, and suppression impact. Return a ranked summary, metrics table, caveats, and follow-ups.
+"""

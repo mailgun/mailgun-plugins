@@ -1,0 +1,19 @@
+{
+  "name": "mailgun-plugins",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-platform Mailgun agent plugin packages built on @mailgun/mcp-server.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-shared.mjs",
+    "check:sync": "node scripts/check-sync.mjs",
+    "validate": "node scripts/validate.mjs",
+    "test": "npm run validate",
+    "mcp:tags": "npx -y @mailgun/mcp-server@2.1.0 --list-tags"
+  },
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "devDependencies": {}
+}

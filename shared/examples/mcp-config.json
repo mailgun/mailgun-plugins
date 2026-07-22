@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "mailgun": {
+      "command": "npx",
+      "args": ["-y", "@mailgun/mcp-server@2.1.0"],
+      "env": {
+        "MAILGUN_API_KEY": "${MAILGUN_API_KEY}",
+        "MAILGUN_API_REGION": "us",
+        "MAILGUN_MCP_TAGS": "send,validate,optimize,inspect"
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+description = "Audit Mailgun domain health, DNS verification, tracking, and recent delivery risk"
+
+prompt = """
+Run a read-only Mailgun domain health audit. Ask for domain, region, and date range if missing. Use domain details, DNS verification, tracking settings, analytics metrics/logs, suppressions, and bounce classification where available. Separate recommendations that require account changes and ask for confirmation before any mutation.
+"""

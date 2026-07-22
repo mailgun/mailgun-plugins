@@ -1,0 +1,30 @@
+{
+  "name": "mailgun",
+  "owner": {
+    "name": "Mailgun",
+    "email": "developers@mailgun.com"
+  },
+  "metadata": {
+    "description": "Marketplace for Mailgun Claude-compatible plugins.",
+    "version": "0.1.0",
+    "pluginRoot": "./plugins/"
+  },
+  "plugins": [
+    {
+      "name": "mailgun-claude",
+      "source": "./plugins/mailgun-claude",
+      "description": "Claude Code plugin for Mailgun email, deliverability, suppression, template, and reporting workflows.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Mailgun",
+        "email": "developers@mailgun.com",
+        "url": "https://github.com/mailgun"
+      },
+      "homepage": "https://www.mailgun.com/",
+      "license": "Apache-2.0",
+      "keywords": ["mailgun", "email", "deliverability", "mcp", "ai"],
+      "category": "email",
+      "strict": true
+    }
+  ]
+}

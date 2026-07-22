@@ -1,0 +1,29 @@
+{
+  "name": "mailgun-cursor",
+  "displayName": "Mailgun",
+  "author": {
+    "name": "Mailgun",
+    "email": "developers@mailgun.com",
+    "url": "https://github.com/mailgun"
+  },
+  "version": "0.1.0",
+  "description": "Mailgun workflows for Cursor: sending, deliverability triage, DNS verification, suppressions, templates, Inspect, Optimize, Validate, and cross-domain reporting.",
+  "homepage": "https://www.mailgun.com/",
+  "repository": "https://github.com/mailgun/mailgun-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["mailgun", "email", "deliverability", "dns", "suppression", "templates", "mcp", "cursor"],
+  "category": "email",
+  "tags": ["mailgun", "email", "deliverability", "mcp"],
+  "commands": [
+    "./commands/mailgun-setup.md",
+    "./commands/audit-domain-health.md",
+    "./commands/investigate-bounces-last-7-days.md",
+    "./commands/verify-dns-for-domain.md",
+    "./commands/review-suppressions-for-domain.md",
+    "./commands/draft-test-email-template.md",
+    "./commands/compare-delivery-across-domains.md"
+  ],
+  "skills": "./skills",
+  "rules": "./rules",
+  "mcpServers": "./mcp.json"
+}
