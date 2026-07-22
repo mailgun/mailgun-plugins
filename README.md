@@ -52,7 +52,7 @@ Install from the Cursor plugin marketplace when published, or add this repositor
 The Cursor package includes:
 
 - Mailgun MCP config at `plugins/mailgun-cursor/mcp.json`.
-- Twelve skills.
+- Fifteen skills.
 - Safety rules in `plugins/mailgun-cursor/rules`.
 - Commands for domain health, bounces, DNS, suppressions, templates, and reporting across domains.
 
