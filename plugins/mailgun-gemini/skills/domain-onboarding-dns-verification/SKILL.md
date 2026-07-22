@@ -34,6 +34,13 @@ Ask for the domain, intended Mailgun region (`us` or `eu`), and whether the doma
 - Tracking CNAME records should match the configured tracking settings before interpreting open or click gaps.
 - New domains and dedicated IPs need gradual warmup before large sends.
 
+## Sender Readiness
+
+- Confirm the From address uses a verified domain the recipient will recognize.
+- For a new sender identity, recommend test mode, preview QA, or a small seed send before wider use.
+- Redirect to campaign preflight when domain readiness is part of a bulk or launch send.
+- Redirect to inbound routing troubleshooting when the problem is receiving mail, route matching, or inbound webhooks.
+
 ## Output
 
 Return a compact table with record type, host/name, expected value, observed state, and action needed. End with the next verification step and expected DNS propagation caveats.

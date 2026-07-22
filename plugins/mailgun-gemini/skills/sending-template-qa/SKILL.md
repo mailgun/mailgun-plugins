@@ -24,6 +24,14 @@ Ask for the sender domain, from address, recipient or test seed list, subject, t
 4. If sending, confirm sender, recipient, subject, body/template, test mode, and tags.
 5. After a send, retrieve delivery events or logs only when the user asks or when validation requires confirmation.
 
+## Template Variable QA
+
+- Identify required variables from the template and compare them to the planned send payload.
+- Check for inconsistent naming, missing variables, reserved variable names, and unresolved placeholders.
+- For batch sends, verify every recipient has the variables used by the subject, text body, HTML body, and template.
+- Confirm text and HTML versions carry the same essential information.
+- For existing templates, verify the intended template version before creating a new version or sending with it.
+
 ## Mailgun Gotchas
 
 - Confirm the Mailgun region before sending. US and EU domains must use the matching API region.
