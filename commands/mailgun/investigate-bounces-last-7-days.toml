@@ -1,0 +1,5 @@
+description = "Investigate Mailgun bounces and delivery failures from the last 7 days"
+
+prompt = """
+Ask for domain and region if missing. Analyze the last 7 days using Mailgun logs, metrics, bounce classification, and suppressions without changing account data. Group findings by permanent failures, temporary failures, provider throttling, authentication issues, and drops caused by suppressions. Do not remove suppressions or resend without explicit confirmation.
+"""
