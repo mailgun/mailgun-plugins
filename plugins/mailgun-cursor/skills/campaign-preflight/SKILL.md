@@ -25,7 +25,7 @@ Ask for domain, region, sender identity, recipient source or list segment, messa
 3. Review recipients before sending. Use Validate when checking individual addresses or samples, and review suppressions, unsubscribes, complaints, and allowlist entries when relevant.
 4. Review the template or content. Confirm variables, text and HTML coverage, unsubscribe or preference links for bulk mail, and brand alignment.
 5. Prefer Inspect preview QA for HTML rendering, links, images, accessibility, and code analysis before production use.
-6. Check recent logs, metrics, bounce classification, inbox placement, or blocklist signals when the user has enough account data and the campaign has reputation risk.
+6. Check recent logs, metrics, bounce classification, and existing inbox placement results when the user has enough account data and the campaign has reputation risk.
 7. Produce a go, hold, or fix first recommendation with evidence and specific next steps.
 
 ## Bulk Send Guardrails

@@ -40,6 +40,9 @@ Ask for the sender domain, from address, recipient or test seed list, subject, t
 - For batch personalization, validate `recipient-variables` JSON before sending so recipients do not receive unresolved placeholders.
 - Avoid template variable names reserved by Mailgun verification flows, including `CODE` and `OTP`.
 - Verify template names before sending. A missing template may be accepted at queue time and fail later in delivery logs.
+- For scheduled sends, use a date format with a numeric timezone offset rather than an abbreviated timezone name.
+- Keep send options, headers, variables, and template variables small enough for Mailgun request limits.
+- If writing integration code, load API keys from environment variables and use username `api` with the private key for Basic Auth.
 
 ## Safety
 
