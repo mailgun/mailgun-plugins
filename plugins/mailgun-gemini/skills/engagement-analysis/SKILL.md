@@ -24,6 +24,13 @@ Ask for domain, region, date range, tags or campaigns, desired dimensions, and t
 4. Look for abnormal complaint, unsubscribe, and bounce patterns alongside positive engagement.
 5. Return practical recommendations, such as segmenting by provider, fixing tracking, testing content, or separating transactional and marketing streams.
 
+## Tracking Notes
+
+- Domain tracking settings and per message tracking flags can differ. Per message flags can override domain defaults.
+- If a message explicitly disables tracking, missing opens or clicks should not be interpreted as low engagement.
+- Compare by sender identity when possible. Too many low volume sender identities can fragment reputation signals.
+- Treat opens as directional because client privacy features can inflate or hide open activity.
+
 ## Safety
 
 Do not enable tracking, update templates, change tags, or send follow up mail without confirmation. Treat engagement logs as sensitive because they can expose recipient behavior.

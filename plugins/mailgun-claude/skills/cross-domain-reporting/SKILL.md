@@ -24,6 +24,14 @@ Collect the domain list, region, date range, dimensions of interest, and whether
 4. Flag domains with DNS, authentication, IP, warmup, or template differences that make the comparison unfair.
 5. Produce a short ranked summary and a deeper table of metrics.
 
+## Comparison Notes
+
+- Separate transactional, marketing, and platform tenant traffic when those streams use different domains, tags, or subaccounts.
+- Call out whether domains use shared IPs, dedicated IPs, or distinct IP pools.
+- Normalize by send volume so one large domain does not hide smaller domains with sharper risk signals.
+- Compare sender identity patterns when available, especially if many low volume senders are used under one domain.
+- State data gaps clearly when tracking, provider dimensions, or suppression data are missing.
+
 ## Safety
 
 Keep reporting in analysis mode unless the user asks for remediation. If remediation is requested, create a proposed action plan first and confirm each account change before using mutating tools.

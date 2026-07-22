@@ -24,6 +24,15 @@ Ask for the sender domain, from address, recipient or test seed list, subject, t
 4. If sending, confirm sender, recipient, subject, body/template, test mode, and tags.
 5. After a send, retrieve delivery events or logs only when the user asks or when validation requires confirmation.
 
+## Mailgun Gotchas
+
+- Confirm the Mailgun region before sending. US and EU domains must use the matching API region.
+- Sandbox domains can send only to authorized recipients.
+- When generating direct API examples, use `multipart/form-data` for the Messages API. In curl examples, use `-F` fields rather than a JSON body.
+- For batch personalization, validate `recipient-variables` JSON before sending so recipients do not receive unresolved placeholders.
+- Avoid template variable names reserved by Mailgun verification flows, including `CODE` and `OTP`.
+- Verify template names before sending. A missing template may be accepted at queue time and fail later in delivery logs.
+
 ## Safety
 
 Creating an Inspect preview test consumes preview quota. Sending an email contacts external recipients. Both require explicit confirmation. Never place API keys, recipient lists, or private variables in generated source files.

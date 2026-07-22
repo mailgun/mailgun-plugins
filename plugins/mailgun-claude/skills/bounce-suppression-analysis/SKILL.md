@@ -24,6 +24,14 @@ Collect the domain, date range, recipient or list segment if relevant, and wheth
 4. For individual recipients, check the narrowest relevant suppression type first.
 5. Recommend cleanup only after explaining the risk of sending to suppressed contacts again.
 
+## Interpretation
+
+- Permanent failures, complaints, and unsubscribes can place recipients on suppression lists.
+- Temporary failures usually retry and should not be treated the same as permanent bounces.
+- A recipient on a suppression list can make later sends appear to vanish unless logs are checked.
+- Repeated soft failures to the same recipient can still indicate a list quality problem.
+- Complaint suppressions carry higher reputation risk than ordinary bounces and need extra caution before any allowlist action.
+
 ## Safety
 
 Never delete suppression entries, import suppressions, add allowlist entries, or resend to affected recipients without explicit confirmation. If the user asks to remove suppressions, restate the address, suppression type, domain, and expected consequence before proceeding.

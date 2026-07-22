@@ -31,6 +31,15 @@ Collect any missing context before using tools:
 5. Summarize the most likely root causes with evidence from the Mailgun tools.
 6. Recommend next actions, separating diagnostic steps from actions that require confirmation.
 
+## Signals to Check
+
+- Complaint rate near or above 0.1 percent is a serious reputation signal.
+- Bounce rate above 2 percent should trigger list quality review, and hard bounce spikes should be treated as urgent.
+- Cold domains, cold IPs, and sudden volume jumps often show up as throttling or temporary failures before hard blocking.
+- Suppressed recipients can explain missing mail because later sends may be dropped without a request failure.
+- Provider specific failures should be grouped separately for Gmail, Microsoft, Yahoo, iCloud, and other major mailbox providers.
+- If current analytics are available, use logs and metrics rather than deprecated stats or events endpoints.
+
 ## Safety
 
 Do not modify suppressions, tracking, templates, webhooks, IP pools, domain settings, or account settings without explicit confirmation. Do not send test messages unless the user confirms sender, recipient, subject, and whether test mode should be used.

@@ -25,6 +25,15 @@ Ask for the domain, intended Mailgun region (`us` or `eu`), and whether the doma
 5. When DNS is missing or stale, provide exact records and a verification checklist.
 6. If the user wants account changes, confirm the domain, region, and desired action before calling mutating tools.
 
+## Review Checks
+
+- SPF should include the Mailgun sending include for the domain's region and stay under the DNS lookup limit.
+- DKIM must publish the selector records Mailgun expects for the domain.
+- DMARC can start at monitoring mode, but production programs should have a rollout path toward enforcement.
+- MX records matter for inbound routes and can also improve trust for send only domains.
+- Tracking CNAME records should match the configured tracking settings before interpreting open or click gaps.
+- New domains and dedicated IPs need gradual warmup before large sends.
+
 ## Output
 
 Return a compact table with record type, host/name, expected value, observed state, and action needed. End with the next verification step and expected DNS propagation caveats.
