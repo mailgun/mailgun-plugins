@@ -11,7 +11,6 @@
   "repository": "https://github.com/mailgun/mailgun-plugins",
   "license": "Apache-2.0",
   "keywords": ["mailgun", "email", "deliverability", "dns", "suppression", "templates", "mcp"],
-  "category": "email",
   "commands": [
     "./commands/mailgun-setup.md",
     "./commands/audit-domain-health.md",

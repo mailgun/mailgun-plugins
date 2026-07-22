@@ -1,0 +1,49 @@
+name: Publish Gemini Extension Branch
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "plugins/mailgun-gemini/**"
+      - "shared/**"
+      - "scripts/build-gemini-extension.mjs"
+      - "scripts/check-sync.mjs"
+      - "scripts/validate.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/publish-gemini-extension.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci --ignore-scripts
+      - run: npm run check:sync
+      - run: npm run validate
+      - run: npm run build:gemini
+      - name: Publish extension root
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          export WORKTREE="$(mktemp -d)"
+          git worktree add "$WORKTREE" --detach
+          cd "$WORKTREE"
+          git rm -rf . >/dev/null 2>&1 || true
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -R "${GITHUB_WORKSPACE}/dist/gemini/mailgun-gemini/." "$WORKTREE"/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Publish Gemini extension from ${GITHUB_SHA}"
+          git branch -M gemini-extension
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gemini-extension

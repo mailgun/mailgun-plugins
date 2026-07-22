@@ -11,11 +11,12 @@ export MAILGUN_API_REGION="us"
 
 Use a scoped key when a workflow only needs sending. Use account-level credentials only when diagnostics or account administration require them.
 
-## Optional Tool Scoping
+## Optional Region and Tool Scoping
 
-Set `MAILGUN_MCP_TAGS` to expose only the tools needed by a workflow:
+Packaged plugin configs only require `MAILGUN_API_KEY`. The MCP server defaults to US region and all tool tags. To use the EU region or expose only a subset of tools, add the optional variables to the installed platform MCP config:
 
 ```bash
+export MAILGUN_API_REGION="eu"
 export MAILGUN_MCP_TAGS="send,inspect"
 ```
 

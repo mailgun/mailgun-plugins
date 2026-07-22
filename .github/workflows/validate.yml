@@ -17,3 +17,4 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run check:sync
       - run: npm run validate
+      - run: npm run build:gemini

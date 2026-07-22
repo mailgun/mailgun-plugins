@@ -1,5 +1,5 @@
 description = "Configure Mailgun MCP credentials and optional tool scoping"
 
 prompt = """
-Guide the user through Mailgun MCP setup. Explain that MAILGUN_API_KEY is required, MAILGUN_API_REGION may be us or eu, and MAILGUN_MCP_TAGS can narrow tools to send, validate, optimize, inspect, or a comma-separated subset. Do not ask the user to paste secrets into chat.
+Guide the user through Mailgun MCP setup. Explain that MAILGUN_API_KEY is required. The packaged MCP config omits MAILGUN_API_REGION and MAILGUN_MCP_TAGS, so the MCP server defaults to US region and all tool tags. For EU accounts or narrowed tools, tell the user to add MAILGUN_API_REGION or MAILGUN_MCP_TAGS to the installed extension's MCP config. Do not ask the user to paste secrets into chat.
 """

@@ -4,7 +4,7 @@ This repo mirrors the practical platform set in the Sinch companion plugin repos
 
 | Feature | Cursor | Claude Code / Claude-compatible | Gemini CLI |
 | --- | --- | --- | --- |
-| Root marketplace | `.cursor-plugin/marketplace.json` | `.claude-plugin/marketplace.json` | Not used by the Sinch reference pattern |
+| Root marketplace | `.cursor-plugin/marketplace.json` | `.claude-plugin/marketplace.json` | Not used by Gemini CLI |
 | Per-plugin manifest | `plugins/mailgun-cursor/.cursor-plugin/plugin.json` | `plugins/mailgun-claude/.claude-plugin/plugin.json` | `plugins/mailgun-gemini/gemini-extension.json` |
 | MCP config | `mcp.json` | `.mcp.json` | `mcpServers` in `gemini-extension.json` |
 | Skills | Native `skills/` directory | Native `skills/` directory | `skills/` directory included with extension |
@@ -23,10 +23,16 @@ The Claude package follows the Sinch reference structure: root marketplace, per-
 
 ## Gemini CLI
 
-Gemini uses a single extension manifest with MCP server settings. The package includes skills and TOML commands, but it does not use Cursor-style `.mdc` rules.
+Gemini uses a single extension manifest with MCP server settings. The source package lives under `plugins/mailgun-gemini`, but Gemini requires `gemini-extension.json` at the extension root. `npm run build:gemini` creates `dist/gemini/mailgun-gemini`, and the `Publish Gemini Extension Branch` workflow publishes that root shape to the `gemini-extension` branch.
+
+Public install:
+
+```bash
+gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemini-extension
+```
 
 ## Known Gaps
 
 - Marketplace publication steps are platform-owned and intentionally documented rather than automated here.
-- The Gemini CLI marketplace/distribution flow can differ by organization; this repo follows the local/GitHub extension style used by the Sinch reference.
+- The Gemini CLI marketplace/distribution flow can differ by organization; this repo publishes a dedicated extension-rooted branch for GitHub installs.
 - No platform package includes Mailgun API business logic. Any tool addition must happen in `mailgun-mcp-server` first.

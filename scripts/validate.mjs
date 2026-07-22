@@ -60,6 +60,12 @@ const validateMcpConfig = async (file) => {
   if (server?.env?.MAILGUN_API_KEY !== "${MAILGUN_API_KEY}") {
     failures.push(`${path.relative(root, file)} must map MAILGUN_API_KEY from the user environment`);
   }
+  if (server?.env?.MAILGUN_API_REGION !== undefined) {
+    failures.push(`${path.relative(root, file)} should omit MAILGUN_API_REGION so the MCP server default applies`);
+  }
+  if (server?.env?.MAILGUN_MCP_TAGS !== undefined) {
+    failures.push(`${path.relative(root, file)} should omit MAILGUN_MCP_TAGS so the MCP server default applies`);
+  }
 };
 
 const validatePlugin = async ({ platform, dir, manifestPath, commandKey, mcpPath }) => {
@@ -105,10 +111,21 @@ await validatePlugin({
   mcpPath: ".mcp.json"
 });
 
+const claudeManifest = await readJson(path.join(root, "plugins/mailgun-claude/.claude-plugin/plugin.json"));
+if (claudeManifest.category !== undefined) {
+  failures.push("Claude plugin manifest must not include category; put category on the marketplace entry");
+}
+
 const gemini = await readJson(path.join(root, "plugins/mailgun-gemini/gemini-extension.json"));
 requireFields(gemini, ["name", "version", "description", "author", "license", "mcpServers", "settings"], "Gemini extension");
 if (gemini.mcpServers?.mailgun?.args?.includes(`@mailgun/mcp-server@${MCP_VERSION}`) !== true) {
   failures.push(`Gemini extension must pin @mailgun/mcp-server@${MCP_VERSION}`);
+}
+if (gemini.mcpServers?.mailgun?.env?.MAILGUN_API_REGION !== undefined) {
+  failures.push("Gemini extension should omit MAILGUN_API_REGION so the MCP server default applies");
+}
+if (gemini.mcpServers?.mailgun?.env?.MAILGUN_MCP_TAGS !== undefined) {
+  failures.push("Gemini extension should omit MAILGUN_MCP_TAGS so the MCP server default applies");
 }
 
 for (const dir of [
@@ -129,6 +146,14 @@ for (const file of [
   ".github/workflows/validate.yml"
 ]) {
   await requireFile(path.join(root, file));
+}
+
+const readme = await readFile(path.join(root, "README.md"), "utf8");
+if (readme.includes("gemini extensions install https://github.com/mailgun/mailgun-plugins\n")) {
+  failures.push("README must not tell users to install Gemini from the multi-platform repo root");
+}
+if (!readme.includes("--ref gemini-extension")) {
+  failures.push("README must document Gemini install from the gemini-extension branch");
 }
 
 if (failures.length > 0) {

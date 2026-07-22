@@ -13,7 +13,7 @@ try {
   await mkdir(copyRoot, { recursive: true });
   await cp(root, copyRoot, {
     recursive: true,
-    filter: (source) => !source.includes(`${path.sep}node_modules`) && !source.includes(`${path.sep}dist`)
+    filter: (source) => !source.includes(`${path.sep}node_modules`)
   });
   await execFileAsync("node", ["scripts/sync-shared.mjs"], { cwd: copyRoot });
   const { stdout } = await execFileAsync("git", ["diff", "--no-index", "--", root, copyRoot], {

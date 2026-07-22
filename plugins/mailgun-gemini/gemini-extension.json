@@ -15,9 +15,7 @@
       "command": "npx",
       "args": ["-y", "@mailgun/mcp-server@2.1.0"],
       "env": {
-        "MAILGUN_API_KEY": "${MAILGUN_API_KEY}",
-        "MAILGUN_API_REGION": "us",
-        "MAILGUN_MCP_TAGS": "send,validate,optimize,inspect"
+        "MAILGUN_API_KEY": "${MAILGUN_API_KEY}"
       },
       "timeout": 15000
     }
@@ -28,16 +26,6 @@
       "description": "Mailgun private API key.",
       "envVar": "MAILGUN_API_KEY",
       "sensitive": true
-    },
-    {
-      "name": "MAILGUN_API_REGION",
-      "description": "Mailgun API region: us or eu. Defaults to us.",
-      "envVar": "MAILGUN_API_REGION"
-    },
-    {
-      "name": "MAILGUN_MCP_TAGS",
-      "description": "Optional comma-separated tool tags to enable: send, validate, optimize, inspect.",
-      "envVar": "MAILGUN_MCP_TAGS"
     }
   ]
 }

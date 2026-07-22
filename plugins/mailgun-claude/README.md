@@ -15,8 +15,8 @@ Set:
 
 ```bash
 export MAILGUN_API_KEY="key-..."
-export MAILGUN_API_REGION="us"
-export MAILGUN_MCP_TAGS="send,validate,optimize,inspect"
 ```
 
 Restart the host after changing environment values.
+
+The packaged config uses the MCP server defaults: US region and all Mailgun tool tags. For EU accounts or scoped tool sets, add `MAILGUN_API_REGION` or `MAILGUN_MCP_TAGS` to `.mcp.json`.

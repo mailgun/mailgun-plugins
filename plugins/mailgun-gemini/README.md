@@ -11,8 +11,14 @@ This package installs Mailgun workflows into Gemini CLI using the extension stru
 
 ## Configure
 
-Use Gemini extension settings or environment variables for:
+Install from the generated extension branch:
+
+```bash
+gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemini-extension
+```
+
+Use Gemini extension settings for:
 
 - `MAILGUN_API_KEY`
-- `MAILGUN_API_REGION`
-- `MAILGUN_MCP_TAGS`
+
+The packaged config uses the MCP server defaults: US region and all Mailgun tool tags. For EU accounts or scoped tool sets, add `MAILGUN_API_REGION` or `MAILGUN_MCP_TAGS` to `gemini-extension.json` before publishing or in your local linked extension.
