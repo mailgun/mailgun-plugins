@@ -1,6 +1,6 @@
 # Platform Support
 
-This repo mirrors the practical platform set in the Sinch companion plugin repository: Cursor, Claude Code / Claude-compatible plugins, and Gemini CLI extensions.
+This repo supports Cursor, Claude Code / Claude-compatible plugins, and Gemini CLI extensions.
 
 | Feature | Cursor | Claude Code / Claude-compatible | Gemini CLI |
 | --- | --- | --- | --- |
@@ -8,7 +8,7 @@ This repo mirrors the practical platform set in the Sinch companion plugin repos
 | Per-plugin manifest | `plugins/mailgun-cursor/.cursor-plugin/plugin.json` | `plugins/mailgun-claude/.claude-plugin/plugin.json` | `plugins/mailgun-gemini/gemini-extension.json` |
 | MCP config | `mcp.json` | `.mcp.json` | `mcpServers` in `gemini-extension.json` |
 | Skills | Native `skills/` directory | Native `skills/` directory | `skills/` directory included with extension |
-| Rules | Native `rules/*.mdc` | Included as guidance files where supported | No direct equivalent in the Sinch reference package |
+| Rules | Native `rules/*.mdc` | Included as guidance files where supported | No direct equivalent |
 | Commands | Markdown commands listed in plugin manifest | Markdown commands listed in plugin manifest | TOML commands under `commands/mailgun/` |
 | Shared content | Generated from `shared/` | Generated from `shared/` | Generated from `shared/` |
 | First-class support | Yes | Yes, with platform differences | Yes, with platform differences |
@@ -19,7 +19,7 @@ Cursor has the richest package in this repo. It includes marketplace metadata, a
 
 ## Claude Code
 
-The Claude package follows the Sinch reference structure: root marketplace, per-plugin manifest, `.mcp.json`, skills, and commands.
+The Claude package includes a root marketplace, per-plugin manifest, `.mcp.json`, skills, and commands.
 
 ## Gemini CLI
 

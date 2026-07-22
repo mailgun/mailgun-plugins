@@ -1,6 +1,6 @@
 # Mailgun Gemini Extension
 
-This package installs Mailgun workflows into Gemini CLI using the extension structure mirrored from the Sinch reference repository.
+This package installs Mailgun workflows into Gemini CLI.
 
 ## Includes
 

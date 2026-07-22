@@ -18,7 +18,7 @@ Ask for the sender domain, from address, recipient or test seed list, subject, t
 
 ## Workflow
 
-1. Review the content locally in the conversation first.
+1. Review the content with the user first.
 2. Prefer Inspect preview QA for HTML rendering, links, images, accessibility, and code analysis before any send.
 3. Use Validate for recipient checks when deliverability or syntax is in question.
 4. If sending, confirm sender, recipient, subject, body/template, test mode, and tags.

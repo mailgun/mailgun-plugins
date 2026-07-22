@@ -1,6 +1,6 @@
 # Mailgun Claude Plugin
 
-This package installs Mailgun workflows into Claude Code or Claude-compatible plugin hosts that support the Sinch-style plugin structure.
+This package installs Mailgun workflows into Claude Code or Claude-compatible plugin hosts.
 
 ## Includes
 

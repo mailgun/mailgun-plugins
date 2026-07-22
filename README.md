@@ -1,8 +1,6 @@
 # Mailgun Plugins
 
-Mailgun Plugins is a companion repository for packaging Mailgun into installable AI-agent plugins. It does not reimplement Mailgun API behavior. The execution layer is [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server), and this repository provides the distribution layer: manifests, skills, rules, commands, setup guidance, validation, and release workflow.
-
-This structure follows the same separation of concerns used by Sinch's multi-platform plugin repo: a standalone MCP server repo plus a companion plugin-packaging repo.
+Mailgun Plugins packages Mailgun for AI-agent platforms. It does not reimplement Mailgun API behavior. The execution layer is [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server), and this repository provides the distribution layer: manifests, skills, rules, commands, setup guidance, validation, and release workflow.
 
 ## Supported Platforms
 
