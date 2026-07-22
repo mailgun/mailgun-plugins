@@ -38,6 +38,7 @@ jobs:
           export WORKTREE="$(mktemp -d)"
           git worktree add "$WORKTREE" --detach
           cd "$WORKTREE"
+          git switch --orphan gemini-extension
           git rm -rf . >/dev/null 2>&1 || true
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
           cp -R "${GITHUB_WORKSPACE}/dist/gemini/mailgun-gemini/." "$WORKTREE"/
@@ -45,5 +46,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Publish Gemini extension from ${GITHUB_SHA}"
-          git branch -M gemini-extension
           git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gemini-extension
