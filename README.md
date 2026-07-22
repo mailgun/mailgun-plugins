@@ -1,6 +1,6 @@
 # Mailgun Plugins
 
-Mailgun Plugins packages Mailgun for agent platforms. It does not reimplement Mailgun API behavior. The execution layer is [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server), and this repository provides the distribution layer: manifests, skills, rules, commands, setup guidance, validation, and release workflow.
+Mailgun Plugins helps developers use Mailgun from agent tools like Cursor, Claude Code, and Gemini CLI. Each package connects the agent to [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server) and adds practical workflows for common Mailgun tasks, including domain setup, delivery diagnostics, suppressions, template QA, and platform operations.
 
 ## Supported Platforms
 
