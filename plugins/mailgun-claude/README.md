@@ -1,6 +1,6 @@
 # Mailgun Claude Plugin
 
-This package installs Mailgun workflows into Claude Code or Claude-compatible plugin hosts.
+This package installs Mailgun workflows into Claude Code or Claude compatible plugin hosts.
 
 ## Includes
 

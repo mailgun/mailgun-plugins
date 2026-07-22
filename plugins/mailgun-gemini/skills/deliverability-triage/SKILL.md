@@ -25,11 +25,11 @@ Collect any missing context before using tools:
 ## Workflow
 
 1. Confirm the active region and domain.
-2. Start with read-only data: domain details, DNS verification state, recent logs, metrics, bounce classification, and suppression counts.
-3. Group failures into permanent bounces, temporary failures, provider throttling, blocklist-like responses, authentication/DNS issues, and content or template quality issues.
+2. Start with data gathering: domain details, DNS verification state, recent logs, metrics, bounce classification, and suppression counts.
+3. Group failures into permanent bounces, temporary failures, provider throttling, responses similar to blocklist rejections, authentication/DNS issues, and content or template quality issues.
 4. Compare current rates to a prior similar window when the user provides enough context.
 5. Summarize the most likely root causes with evidence from the Mailgun tools.
-6. Recommend next actions, separating safe read-only follow-ups from actions that require confirmation.
+6. Recommend next actions, separating diagnostic steps from actions that require confirmation.
 
 ## Safety
 

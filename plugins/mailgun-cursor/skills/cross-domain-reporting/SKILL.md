@@ -8,7 +8,7 @@ metadata:
   tags: mailgun, reporting, analytics, domains
 ---
 
-# Cross-Domain Reporting
+# Reporting Across Domains
 
 Use this skill when the user asks to compare performance across Mailgun domains, brands, streams, or subaccounts.
 
@@ -26,4 +26,4 @@ Collect the domain list, region, date range, dimensions of interest, and whether
 
 ## Safety
 
-Keep reporting read-only unless the user asks for remediation. If remediation is requested, create a proposed action plan first and confirm each account change before using mutating tools.
+Keep reporting in analysis mode unless the user asks for remediation. If remediation is requested, create a proposed action plan first and confirm each account change before using mutating tools.

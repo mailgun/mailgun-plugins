@@ -1,13 +1,13 @@
 # Mailgun Plugins
 
-Mailgun Plugins packages Mailgun for AI-agent platforms. It does not reimplement Mailgun API behavior. The execution layer is [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server), and this repository provides the distribution layer: manifests, skills, rules, commands, setup guidance, validation, and release workflow.
+Mailgun Plugins packages Mailgun for agent platforms. It does not reimplement Mailgun API behavior. The execution layer is [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server), and this repository provides the distribution layer: manifests, skills, rules, commands, setup guidance, validation, and release workflow.
 
 ## Supported Platforms
 
 | Platform | Package | Status | Notes |
 | --- | --- | --- | --- |
-| Cursor | `plugins/mailgun-cursor` | First-class | Marketplace manifest, plugin manifest, MCP config, skills, rules, and commands. |
-| Claude Code / Claude-compatible | `plugins/mailgun-claude` | Supported | Claude marketplace/plugin manifest, MCP config, skills, and commands. Rules are included as guidance files where supported by the client. |
+| Cursor | `plugins/mailgun-cursor` | Full | Marketplace manifest, plugin manifest, MCP config, skills, rules, and commands. |
+| Claude Code / Claude compatible | `plugins/mailgun-claude` | Supported | Claude marketplace/plugin manifest, MCP config, skills, and commands. Rules are included as guidance files where supported by the client. |
 | Gemini CLI | `plugins/mailgun-gemini` | Supported | Gemini extension manifest, MCP server config, settings metadata, skills, and TOML commands. |
 
 See [docs/platform-support.md](docs/platform-support.md) for the detailed matrix.
@@ -15,7 +15,7 @@ See [docs/platform-support.md](docs/platform-support.md) for the detailed matrix
 ## How It Works
 
 - `shared/` is the canonical source for Mailgun skills, reusable rules, setup docs, example prompts, and examples.
-- `plugins/mailgun-cursor`, `plugins/mailgun-claude`, and `plugins/mailgun-gemini` contain platform-specific manifests and generated copies of shared content.
+- `plugins/mailgun-cursor`, `plugins/mailgun-claude`, and `plugins/mailgun-gemini` contain platform manifests and generated copies of shared content.
 - `scripts/sync-shared.mjs` copies shared content into each platform package.
 - `scripts/validate.mjs` checks manifests, referenced files, skill frontmatter, MCP version pinning, and required docs.
 - CI runs sync drift checks and validation on every push and pull request.
@@ -25,7 +25,7 @@ See [docs/platform-support.md](docs/platform-support.md) for the detailed matrix
 GitHub Actions is enabled for this repository:
 
 - `Validate` runs on pushes and pull requests to `main`.
-- `Publish Gemini Extension Branch` builds `plugins/mailgun-gemini` into an extension-rooted artifact and publishes it to the `gemini-extension` branch when Gemini package files change.
+- `Publish Gemini Extension Branch` builds `plugins/mailgun-gemini` into a Gemini extension artifact and publishes it to the `gemini-extension` branch when Gemini package files change.
 
 ## MCP Server Compatibility
 
@@ -39,7 +39,7 @@ Required environment:
 
 - `MAILGUN_API_KEY`: Mailgun private API key.
 - `MAILGUN_API_REGION`: optional MCP server setting, `us` or `eu`; the packaged configs omit it and the server defaults to `us`.
-- `MAILGUN_MCP_TAGS`: optional MCP server setting for a comma-separated subset of `send`, `validate`, `optimize`, `inspect`; the packaged configs omit it and expose all tools.
+- `MAILGUN_MCP_TAGS`: optional MCP server setting for a comma separated subset of `send`, `validate`, `optimize`, `inspect`; the packaged configs omit it and expose all tools.
 
 For EU accounts or scoped tool sets, edit the installed platform MCP config to add `MAILGUN_API_REGION` or `MAILGUN_MCP_TAGS`.
 
@@ -52,15 +52,15 @@ Install from the Cursor plugin marketplace when published, or add this repositor
 The Cursor package includes:
 
 - Mailgun MCP config at `plugins/mailgun-cursor/mcp.json`.
-- Six task-oriented skills.
+- Six workflow skills.
 - Safety rules in `plugins/mailgun-cursor/rules`.
-- Commands for domain health, bounces, DNS, suppressions, templates, and cross-domain reporting.
+- Commands for domain health, bounces, DNS, suppressions, templates, and reporting across domains.
 
 ### Claude Code
 
 Add this repository as a Claude plugin marketplace source, then install `mailgun-claude`.
 
-The Claude package includes a `.mcp.json` file, the shared Mailgun skills, and Claude-compatible commands.
+The Claude package includes a `.mcp.json` file, the shared Mailgun skills, and Claude compatible commands.
 
 ### Gemini CLI
 
@@ -70,7 +70,7 @@ Install the generated Gemini extension branch:
 gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemini-extension
 ```
 
-The source package is under `plugins/mailgun-gemini` and includes `gemini-extension.json`, skills, and TOML commands. Gemini requires `gemini-extension.json` at the repository root, so GitHub Actions publishes the extension-rooted branch from that package.
+The source package is under `plugins/mailgun-gemini` and includes `gemini-extension.json`, skills, and TOML commands. Gemini requires `gemini-extension.json` at the repository root, so GitHub Actions publishes the `gemini-extension` branch from that package.
 
 ## Local Development
 

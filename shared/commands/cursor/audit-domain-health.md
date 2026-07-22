@@ -5,7 +5,7 @@ description: Audit Mailgun domain health, DNS verification, tracking, and recent
 
 # Audit Mailgun Domain Health
 
-Run a read-only domain health audit.
+Run a Mailgun domain health audit without changing the account.
 
 If missing, ask for domain, region, and date range. Default the date range to the last 7 days only after the user accepts.
 

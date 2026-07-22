@@ -7,6 +7,6 @@ description: Investigate Mailgun bounces and delivery failures from the last 7 d
 
 Ask for the Mailgun domain and region if they are missing.
 
-Use read-only logs, metrics, bounce classification, and suppression tools to analyze the last 7 days. Group findings by permanent failures, temporary failures, provider throttling, authentication issues, and suppression-driven drops.
+Use logs, metrics, bounce classification, and suppression tools to analyze the last 7 days without changing account data. Group findings by permanent failures, temporary failures, provider throttling, authentication issues, and drops caused by suppressions.
 
 Do not remove suppressions or resend messages without explicit confirmation.

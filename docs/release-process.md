@@ -42,4 +42,4 @@ gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemin
 
 ## Compatibility Policy
 
-Patch releases should keep the same MCP version unless content-only guidance changes are being shipped. Minor releases may bump `@mailgun/mcp-server` when new tools, tags, or behaviors are required by plugin skills or commands.
+Patch releases should keep the same MCP version unless only guidance content is changing. Minor releases may bump `@mailgun/mcp-server` when new tools, tags, or behaviors are required by plugin skills or commands.

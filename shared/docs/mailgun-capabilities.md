@@ -14,7 +14,7 @@ The Mailgun plugin packages rely on `@mailgun/mcp-server` for all Mailgun API ex
 
 - `MAILGUN_API_KEY` is required.
 - `MAILGUN_API_REGION` is optional and should be `us` or `eu`; the server defaults to `us`.
-- `MAILGUN_API_HOSTNAME` can override the region-derived API host when explicitly needed.
+- `MAILGUN_API_HOSTNAME` can override the API host chosen from the region when explicitly needed.
 - `MAILGUN_MCP_TAGS` can narrow the exposed tool set. Valid tags are `send`, `validate`, `optimize`, and `inspect`.
 
 ## Product Tags
@@ -37,7 +37,7 @@ The Mailgun plugin packages rely on `@mailgun/mcp-server` for all Mailgun API ex
 
 ## Safety Defaults
 
-- Start with read-only diagnostics before making any account change.
-- Ask before sending email, creating preview tests, editing DNS-related settings, updating tracking, mutating suppressions, changing webhooks, editing templates, or touching account/admin settings.
+- Start with diagnostics before making any account change.
+- Ask before sending email, creating preview tests, editing DNS settings, updating tracking, mutating suppressions, changing webhooks, editing templates, or touching account/admin settings.
 - Use the narrowest practical tag set. For example, use `MAILGUN_MCP_TAGS=inspect` for preview QA, `validate` for address checks, or `send,inspect` for sending plus preflight.
 - Treat event logs, message bodies, stored messages, recipients, and template content as sensitive customer data.

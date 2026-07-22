@@ -14,7 +14,7 @@ Use this skill when the user asks about suppressed recipients, bounces, complain
 
 ## Intake
 
-Collect the domain, date range, recipient or list segment if relevant, and whether the user wants read-only analysis or cleanup guidance.
+Collect the domain, date range, recipient or list segment if relevant, and whether the user wants analysis only or cleanup guidance.
 
 ## Workflow
 
@@ -22,7 +22,7 @@ Collect the domain, date range, recipient or list segment if relevant, and wheth
 2. Separate bounces, complaints, unsubscribes, and allowlist entries.
 3. Identify whether drops are caused by suppressions, recent permanent failures, complaint policy, unsubscribes, or list hygiene problems.
 4. For individual recipients, check the narrowest relevant suppression type first.
-5. Recommend cleanup only after explaining the risk of re-mailing suppressed contacts.
+5. Recommend cleanup only after explaining the risk of sending to suppressed contacts again.
 
 ## Safety
 

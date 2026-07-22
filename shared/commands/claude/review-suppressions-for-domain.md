@@ -7,4 +7,4 @@ description: Review bounces, complaints, unsubscribes, and allowlists for a Mail
 
 Ask for domain, region, date range, and any recipient or list segment to focus on.
 
-Use read-only suppression and log tools to summarize bounces, complaints, unsubscribes, allowlist entries, and suppression-related drops. Do not delete, import, or add suppression or allowlist entries without explicit confirmation.
+Use suppression and log tools to summarize bounces, complaints, unsubscribes, allowlist entries, and drops tied to suppressions. Do not delete, import, or add suppression or allowlist entries without explicit confirmation.

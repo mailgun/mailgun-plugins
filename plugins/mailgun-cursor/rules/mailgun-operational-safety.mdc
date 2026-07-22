@@ -7,7 +7,7 @@ alwaysApply: true
 
 Use Mailgun tools cautiously and narrate intent before any action that can change account state, consume quota, or send content externally.
 
-- Prefer read-only diagnostics before mutating actions.
+- Prefer diagnostics before mutating actions.
 - Require explicit user confirmation before sending email, creating preview tests, updating templates, changing DNS/domain/tracking/webhook settings, importing or deleting suppressions, editing routes, changing IP pools, rotating DKIM keys, modifying keys, or changing account/subaccount configuration.
 - Ask for missing operational context before calling tools: domain, region, date range, recipient, sender, template name, tag, provider, event type, or desired product scope.
 - Avoid destructive and admin actions unless the user clearly requested the action and confirmed the target.

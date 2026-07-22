@@ -9,7 +9,7 @@ export MAILGUN_API_KEY="key-..."
 export MAILGUN_API_REGION="us"
 ```
 
-Use a scoped key when a workflow only needs sending. Use account-level credentials only when diagnostics or account administration require them.
+Use a scoped key when a workflow only needs sending. Use account credentials only when diagnostics or account administration require them.
 
 ## Optional Region and Tool Scoping
 

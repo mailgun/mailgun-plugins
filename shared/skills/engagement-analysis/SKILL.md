@@ -26,4 +26,4 @@ Ask for domain, region, date range, tags or campaigns, desired dimensions, and t
 
 ## Safety
 
-Do not enable tracking, update templates, change tags, or send follow-up mail without confirmation. Treat engagement logs as sensitive because they can expose recipient behavior.
+Do not enable tracking, update templates, change tags, or send follow up mail without confirmation. Treat engagement logs as sensitive because they can expose recipient behavior.

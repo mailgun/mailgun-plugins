@@ -37,7 +37,7 @@ Run `npm run sync` after editing shared content. CI runs `npm run check:sync` so
 
 ## Gemini Distribution
 
-Gemini CLI expects `gemini-extension.json` at the extension repository root. Because this repository also hosts Cursor and Claude marketplace roots, Gemini source remains under `plugins/mailgun-gemini` and `npm run build:gemini` creates an extension-rooted artifact at `dist/gemini/mailgun-gemini`.
+Gemini CLI expects `gemini-extension.json` at the extension repository root. Because this repository also hosts Cursor and Claude marketplace roots, Gemini source remains under `plugins/mailgun-gemini` and `npm run build:gemini` creates a Gemini extension artifact at `dist/gemini/mailgun-gemini`.
 
 The `Publish Gemini Extension Branch` GitHub Actions workflow publishes that artifact to the `gemini-extension` branch for public installation.
 
@@ -49,13 +49,13 @@ Default startup uses:
 npx -y @mailgun/mcp-server@2.1.0
 ```
 
-This gives each platform a predictable, versioned MCP dependency. Packaged configs require only `MAILGUN_API_KEY`; the MCP server defaults to the US region and all tags when `MAILGUN_API_REGION` and `MAILGUN_MCP_TAGS` are omitted. Local development can override the command to a built checkout of `mailgun-mcp-server` without changing plugin content.
+This gives each platform a predictable MCP dependency with a fixed version. Packaged configs require only `MAILGUN_API_KEY`; the MCP server defaults to the US region and all tags when `MAILGUN_API_REGION` and `MAILGUN_MCP_TAGS` are omitted. Local development can override the command to a built checkout of `mailgun-mcp-server` without changing plugin content.
 
 ## Safety Model
 
 The MCP server exposes a curated tool surface. The plugin adds agent guidance:
 
-- read-only diagnostics first,
+- diagnostics before account changes,
 - explicit confirmation before sending or mutating,
 - narrow tool scoping through `MAILGUN_MCP_TAGS`,
 - sensitivity handling for recipients, logs, stored messages, templates, webhook payloads, and API keys.
