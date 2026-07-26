@@ -4,31 +4,45 @@ This repo versions plugin packaging separately from `@mailgun/mcp-server`, while
 
 ## Version Bump Checklist
 
-1. Review the target `@mailgun/mcp-server` release notes.
-2. Update every MCP startup config:
+1. Verify the target `@mailgun/mcp-server` version is published:
+
+```bash
+npm view @mailgun/mcp-server version dist-tags time --json
+npm view @mailgun/mcp-server@<version> version --json
+```
+
+2. Review the target `@mailgun/mcp-server` release notes.
+3. Update every MCP startup config:
    - `plugins/mailgun-cursor/mcp.json`
    - `plugins/mailgun-claude/.mcp.json`
    - `plugins/mailgun-gemini/gemini-extension.json`
-3. Update the MCP version in:
+4. Update the MCP version in:
    - `package.json`
    - `scripts/validate.mjs`
    - `README.md`
    - `shared/docs/mailgun-capabilities.md`
    - `shared/examples/mcp-config.json`
-4. Update plugin manifest versions when plugin content changes.
-5. Run:
+5. Run `npm run sync` so generated platform Skills pick up any shared guidance changes.
+6. Update plugin manifest versions when plugin content changes.
+7. Run:
 
 ```bash
-npm run sync
+npm run check:mcp-version
 npm run validate
 npm run check:sync
 npm run build:gemini
 ```
 
-6. Update changelogs.
-7. Tag the repository release.
-8. Refresh platform marketplace submissions or listings.
-9. Confirm the `Publish Gemini Extension Branch` workflow has updated the `gemini-extension` branch before announcing Gemini install instructions.
+8. Update changelogs.
+9. Tag the repository release.
+10. Refresh platform marketplace submissions or listings.
+11. Confirm the `Publish Gemini Extension Branch` workflow has updated the `gemini-extension` branch before announcing Gemini install instructions.
+
+## MCP Version Freshness
+
+The `Check MCP Version` GitHub Actions workflow runs daily and can be triggered manually. It compares the pinned MCP version in `scripts/validate.mjs` with npm's `latest` dist-tag for `@mailgun/mcp-server`.
+
+If the workflow fails, update the pinned version with the checklist above. The normal `Validate` workflow checks repo consistency, while `Check MCP Version` checks whether this repo is behind npm.
 
 ## Publication Notes
 

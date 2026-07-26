@@ -32,7 +32,7 @@ GitHub Actions is enabled for this repository:
 This repo currently pins plugin MCP startup commands to:
 
 ```bash
-npx -y @mailgun/mcp-server@2.1.0
+npx -y @mailgun/mcp-server@2.1.2
 ```
 
 Required environment:

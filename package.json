@@ -8,10 +8,11 @@
   "scripts": {
     "sync": "node scripts/sync-shared.mjs",
     "check:sync": "node scripts/check-sync.mjs",
+    "check:mcp-version": "node scripts/check-mcp-version.mjs",
     "build:gemini": "node scripts/build-gemini-extension.mjs",
     "validate": "node scripts/validate.mjs",
     "test": "npm run check:sync && npm run validate && npm run build:gemini",
-    "mcp:tags": "npx -y @mailgun/mcp-server@2.1.0 --list-tags"
+    "mcp:tags": "npx -y @mailgun/mcp-server@2.1.2 --list-tags"
   },
   "engines": {
     "node": ">=20.12.0"

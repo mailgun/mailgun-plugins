@@ -46,7 +46,7 @@ The `Publish Gemini Extension Branch` GitHub Actions workflow publishes that art
 Default startup uses:
 
 ```bash
-npx -y @mailgun/mcp-server@2.1.0
+npx -y @mailgun/mcp-server@2.1.2
 ```
 
 This gives each platform a predictable MCP dependency with a fixed version. Packaged configs require only `MAILGUN_API_KEY`; the MCP server defaults to the US region and all tags when `MAILGUN_API_REGION` and `MAILGUN_MCP_TAGS` are omitted. Local development can override the command to a built checkout of `mailgun-mcp-server` without changing plugin content.
