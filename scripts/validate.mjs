@@ -41,6 +41,9 @@ const assertPath = async (base, reference, label) => {
 const validateMarketplace = async (platform, file, expectedName) => {
   const marketplace = await readJson(file);
   requireFields(marketplace, ["name", "plugins"], `${platform} marketplace`);
+  if (platform === "Cursor" && marketplace.metadata?.pluginRoot !== undefined) {
+    failures.push("Cursor marketplace metadata must not include pluginRoot; plugin sources are repo-root relative");
+  }
   const entry = marketplace.plugins?.find((plugin) => plugin.name === expectedName);
   if (!entry) failures.push(`${platform} marketplace missing ${expectedName}`);
   if (entry?.source && !(await exists(path.resolve(root, entry.source)))) {
