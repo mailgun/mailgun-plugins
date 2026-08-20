@@ -10,8 +10,7 @@
     "homepage": "https://www.mailgun.com/",
     "repository": "https://github.com/mailgun/mailgun-plugins",
     "license": "Apache-2.0",
-    "keywords": ["mailgun", "email", "deliverability", "mcp", "ai", "cursor-plugin"],
-    "pluginRoot": "plugins"
+    "keywords": ["mailgun", "email", "deliverability", "mcp", "ai", "cursor-plugin"]
   },
   "plugins": [
     {
