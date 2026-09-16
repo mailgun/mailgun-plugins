@@ -6,7 +6,7 @@
     "email": "developers@mailgun.com",
     "url": "https://github.com/mailgun"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mailgun workflows for Cursor: sending, deliverability triage, DNS verification, suppressions, templates, Inspect, Optimize, Validate, and cross-domain reporting.",
   "homepage": "https://www.mailgun.com/",
   "repository": "https://github.com/mailgun/mailgun-plugins",

@@ -23,7 +23,7 @@ Ask for the host app, plugin package, operating system, whether the issue happen
 1. Confirm `MAILGUN_API_KEY` is set in the host environment and that the host was restarted after changes.
 2. Check whether `MAILGUN_API_REGION` is needed for EU accounts.
 3. Check whether `MAILGUN_MCP_TAGS` is hiding expected tools. Valid tags are `send`, `validate`, `optimize`, and `inspect`.
-4. Verify the plugin config launches `npx -y @mailgun/mcp-server@2.1.2` unless the user is intentionally testing a local server build.
+4. Verify the plugin config launches `npx -y @mailgun/mcp-server@2.1.3` unless the user is intentionally testing a local server build.
 5. For local testing, point the platform MCP config at the built `mailgun-mcp.js` from a local `mailgun-mcp-server` checkout.
 6. Use the MCP Inspector or the host app's tool listing to confirm which Mailgun tools are exposed.
 7. Classify failures as missing environment, wrong region, tag filtering, host reload, local build, network/auth, or account permission issues.
