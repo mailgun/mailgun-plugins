@@ -1,0 +1,5 @@
+description = "Review bounces, complaints, unsubscribes, and allowlists for a Mailgun domain"
+
+prompt = """
+Ask for domain, region, date range, and optional recipient/list focus. Use suppression and log tools to summarize bounces, complaints, unsubscribes, allowlist entries, and drops tied to suppressions. Do not mutate suppression or allowlist entries without explicit confirmation.
+"""
