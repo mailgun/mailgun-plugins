@@ -3,7 +3,7 @@ name: mcp-troubleshooting
 description: Help developers debug Mailgun plugin startup, environment variables, MCP tag filtering, local server overrides, and missing tool exposure.
 metadata:
   author: Mailgun
-  version: 0.1.0
+  version: 0.1.1
   category: Developer Tools
   tags: mailgun, mcp, setup, troubleshooting, developer
 ---
