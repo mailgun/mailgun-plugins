@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Marketplace for Mailgun Claude-compatible plugins.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "pluginRoot": "./plugins/"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "mailgun-claude",
       "source": "./plugins/mailgun-claude",
       "description": "Claude Code plugin for Mailgun email, deliverability, suppression, template, and reporting workflows.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Mailgun",
         "email": "developers@mailgun.com",

@@ -5,10 +5,10 @@ The Mailgun plugin packages rely on `@mailgun/mcp-server` for all Mailgun API ex
 ## MCP Server
 
 - Package: `@mailgun/mcp-server`
-- Compatible version pinned by this repo: `2.1.2`
+- Compatible version pinned by this repo: `2.1.3`
 - Transport: local stdio
 - Executable: `mailgun-mcp-server`
-- Default launch: `npx -y @mailgun/mcp-server@2.1.2`
+- Default launch: `npx -y @mailgun/mcp-server@2.1.3`
 
 ## Environment
 

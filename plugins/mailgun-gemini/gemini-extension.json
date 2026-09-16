@@ -1,6 +1,6 @@
 {
   "name": "mailgun-gemini",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Gemini CLI extension for Mailgun email, deliverability, suppression, template, Inspect, Optimize, Validate, and reporting workflows.",
   "author": {
     "name": "Mailgun",
@@ -13,7 +13,7 @@
   "mcpServers": {
     "mailgun": {
       "command": "npx",
-      "args": ["-y", "@mailgun/mcp-server@2.1.2"],
+      "args": ["-y", "@mailgun/mcp-server@2.1.3"],
       "env": {
         "MAILGUN_API_KEY": "${MAILGUN_API_KEY}"
       },

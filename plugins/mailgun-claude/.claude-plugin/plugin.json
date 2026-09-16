@@ -5,7 +5,7 @@
     "email": "developers@mailgun.com",
     "url": "https://github.com/mailgun"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Claude Code plugin for Mailgun email, deliverability, suppression, template, Inspect, Optimize, Validate, and reporting workflows.",
   "homepage": "https://www.mailgun.com/",
   "repository": "https://github.com/mailgun/mailgun-plugins",

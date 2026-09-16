@@ -1,6 +1,6 @@
 {
   "name": "mailgun-plugins",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Multi-platform Mailgun agent plugin packages built on @mailgun/mcp-server.",
   "license": "Apache-2.0",
@@ -12,7 +12,7 @@
     "build:gemini": "node scripts/build-gemini-extension.mjs",
     "validate": "node scripts/validate.mjs",
     "test": "npm run check:sync && npm run validate && npm run build:gemini",
-    "mcp:tags": "npx -y @mailgun/mcp-server@2.1.2 --list-tags"
+    "mcp:tags": "npx -y @mailgun/mcp-server@2.1.3 --list-tags"
   },
   "engines": {
     "node": ">=20.12.0"
