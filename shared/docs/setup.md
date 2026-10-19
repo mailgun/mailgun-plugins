@@ -22,6 +22,8 @@ export MAILGUN_MCP_TAGS="send,inspect"
 
 Valid tags are `send`, `validate`, `optimize`, and `inspect`.
 
+The Codex package forwards `MAILGUN_API_REGION` and `MAILGUN_MCP_TAGS` from the environment Codex was started in, so Codex users can export them without editing the installed config.
+
 ## Local MCP Development Override
 
 The packaged plugins use the published npm package by default. To test a local checkout of `mailgun-mcp-server`, replace the MCP command in the platform config with:
