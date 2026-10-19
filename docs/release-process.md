@@ -16,6 +16,7 @@ npm view @mailgun/mcp-server@<version> version --json
    - `plugins/mailgun-cursor/mcp.json`
    - `plugins/mailgun-claude/.mcp.json`
    - `plugins/mailgun-gemini/gemini-extension.json`
+   - `plugins/mailgun-codex/.mcp.json`
 4. Update the MCP version in:
    - `package.json`
    - `scripts/validate.mjs`
@@ -47,6 +48,8 @@ If the workflow fails, update the pinned version with the checklist above. The n
 ## Publication Notes
 
 Cursor and Claude marketplace publication usually happens outside this repository. Keep manifests complete and validated so a publisher can submit the repo without local surgery.
+
+Codex installs from the repo marketplace at `.agents/plugins/marketplace.json`. Bump `plugins/mailgun-codex/.codex-plugin/plugin.json` so Codex picks up a new cached version.
 
 Gemini CLI installs from a repository root containing `gemini-extension.json`. This repo keeps Gemini source under `plugins/mailgun-gemini`, builds `dist/gemini/mailgun-gemini`, and publishes that directory to the `gemini-extension` branch. Users install with:
 

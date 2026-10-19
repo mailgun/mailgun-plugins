@@ -1,0 +1,35 @@
+{
+  "name": "mailgun-codex",
+  "version": "0.1.1",
+  "description": "Codex plugin for Mailgun email, deliverability, suppression, template, Inspect, Optimize, Validate, and reporting workflows.",
+  "author": {
+    "name": "Mailgun",
+    "email": "developers@mailgun.com",
+    "url": "https://github.com/mailgun"
+  },
+  "homepage": "https://www.mailgun.com/",
+  "repository": "https://github.com/mailgun/mailgun-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["mailgun", "email", "deliverability", "dns", "suppression", "templates", "mcp", "codex"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Mailgun",
+    "shortDescription": "Send, diagnose, and report on Mailgun email",
+    "longDescription": "Connects Codex to the Mailgun MCP server and adds workflows for domain setup and DNS verification, deliverability triage, bounce and suppression analysis, template QA with Inspect, address validation, inbox placement with Optimize, and reporting across domains. Requires a Mailgun private API key in MAILGUN_API_KEY.",
+    "developerName": "Mailgun",
+    "category": "Developer Tools",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://www.mailgun.com/",
+    "privacyPolicyURL": "https://www.mailgun.com/legal/privacy-policy/",
+    "termsOfServiceURL": "https://www.mailgun.com/legal/terms/",
+    "defaultPrompt": [
+      "Audit the health of my Mailgun sending domain",
+      "Why did my Mailgun bounce rate go up this week?",
+      "Verify the DNS records for my Mailgun domain"
+    ],
+    "brandColor": "#F04E23",
+    "composerIcon": "./assets/mailgun-icon.png",
+    "logo": "./assets/mailgun-icon.png"
+  }
+}

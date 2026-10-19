@@ -119,6 +119,35 @@ if (claudeManifest.category !== undefined) {
   failures.push("Claude plugin manifest must not include category; put category on the marketplace entry");
 }
 
+const codexMarketplace = await readJson(path.join(root, ".agents", "plugins", "marketplace.json"));
+requireFields(codexMarketplace, ["name", "plugins"], "Codex marketplace");
+const codexEntry = codexMarketplace.plugins?.find((plugin) => plugin.name === "mailgun-codex");
+if (!codexEntry) failures.push("Codex marketplace missing mailgun-codex");
+if (codexEntry && !(await exists(path.resolve(root, codexEntry.source?.path ?? "")))) {
+  failures.push(`Codex marketplace source does not exist: ${codexEntry.source?.path}`);
+}
+if (codexEntry && (!codexEntry.policy?.installation || !codexEntry.policy?.authentication || !codexEntry.category)) {
+  failures.push("Codex marketplace entry must include policy.installation, policy.authentication, and category");
+}
+
+const codexDir = path.join(root, "plugins", "mailgun-codex");
+const codexManifest = await readJson(path.join(codexDir, ".codex-plugin", "plugin.json"));
+requireFields(codexManifest, ["name", "version", "description", "author", "license", "keywords", "interface"], "Codex plugin");
+if (codexManifest.skills) await assertPath(codexDir, codexManifest.skills, "Codex skills");
+if (codexManifest.mcpServers) await assertPath(codexDir, codexManifest.mcpServers, "Codex MCP config");
+// Codex forwards variables from the launch environment with env_vars instead of ${VAR} interpolation.
+const codexServer = (await readJson(path.join(codexDir, ".mcp.json"))).mcpServers?.mailgun;
+if (!codexServer) failures.push("plugins/mailgun-codex/.mcp.json missing mcpServers.mailgun");
+if (codexServer?.args?.includes(`@mailgun/mcp-server@${MCP_VERSION}`) !== true) {
+  failures.push(`plugins/mailgun-codex/.mcp.json must pin @mailgun/mcp-server@${MCP_VERSION}`);
+}
+if (codexServer?.env_vars?.includes("MAILGUN_API_KEY") !== true) {
+  failures.push("plugins/mailgun-codex/.mcp.json must forward MAILGUN_API_KEY with env_vars");
+}
+if (codexServer?.env !== undefined) {
+  failures.push("plugins/mailgun-codex/.mcp.json should forward variables with env_vars, not env");
+}
+
 const gemini = await readJson(path.join(root, "plugins/mailgun-gemini/gemini-extension.json"));
 requireFields(gemini, ["name", "version", "description", "author", "license", "mcpServers", "settings"], "Gemini extension");
 if (gemini.mcpServers?.mailgun?.args?.includes(`@mailgun/mcp-server@${MCP_VERSION}`) !== true) {
@@ -135,7 +164,9 @@ for (const dir of [
   "shared/skills",
   "plugins/mailgun-cursor/skills",
   "plugins/mailgun-claude/skills",
-  "plugins/mailgun-gemini/skills"
+  "plugins/mailgun-gemini/skills",
+  "shared/commands/codex",
+  "plugins/mailgun-codex/skills"
 ]) {
   await validateSkills(dir);
 }

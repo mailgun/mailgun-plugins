@@ -1,0 +1,20 @@
+{
+  "name": "mailgun",
+  "interface": {
+    "displayName": "Mailgun"
+  },
+  "plugins": [
+    {
+      "name": "mailgun-codex",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mailgun-codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
