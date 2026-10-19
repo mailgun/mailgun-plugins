@@ -35,7 +35,7 @@ gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemin
 
 Codex reads the repo marketplace at `.agents/plugins/marketplace.json` and the manifest at `.codex-plugin/plugin.json`. Codex plugins have no commands or rules, so `shared/commands/codex` holds those workflows as skills, and `npm run sync` merges them with the shared skills.
 
-Codex passes only listed variables to stdio MCP servers. The `.mcp.json` uses `env_vars` to forward `PATH`, `HOME`, `MAILGUN_API_KEY`, `MAILGUN_API_REGION`, and `MAILGUN_MCP_TAGS` from the environment Codex was started in.
+Codex passes only listed variables to stdio MCP servers. The `.mcp.json` uses `env_vars` to forward `PATH`, `HOME`, `MAILGUN_API_KEY`, `MAILGUN_API_REGION`, and `MAILGUN_MCP_TAGS` from the environment Codex was started in. The desktop apps launched from the Dock or Finder do not see shell profile exports, so macOS desktop users set the key with `launchctl setenv MAILGUN_API_KEY "key-..."` and restart the app.
 
 Install from GitHub:
 
