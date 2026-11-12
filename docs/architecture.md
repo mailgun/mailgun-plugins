@@ -20,9 +20,11 @@ flowchart LR
   Shared["shared content"] --> Cursor["plugins/mailgun-cursor"]
   Shared --> Claude["plugins/mailgun-claude"]
   Shared --> Gemini["plugins/mailgun-gemini"]
+  Shared --> Codex["plugins/mailgun-codex"]
   Cursor --> MCP["@mailgun/mcp-server"]
   Claude --> MCP
   Gemini --> MCP
+  Codex --> MCP
   MCP --> API["Mailgun APIs"]
 ```
 
@@ -32,6 +34,7 @@ flowchart LR
 
 - Cursor and Claude use Markdown command files.
 - Gemini uses TOML command files.
+- Codex has no commands or rules, so `shared/commands/codex` holds them as skills that sync merges into the Codex `skills/` directory.
 
 Run `npm run sync` after editing shared content. CI runs `npm run check:sync` so generated platform copies cannot drift silently.
 

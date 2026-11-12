@@ -20,7 +20,9 @@ export MAILGUN_API_REGION="eu"
 export MAILGUN_MCP_TAGS="send,inspect"
 ```
 
-Valid tags are `send`, `validate`, `optimize`, and `inspect`.
+Values combine, and a tool loads if it matches any of them: the products `send`, `validate`, `optimize`, and `inspect`; a Send toolset such as `send.templates` or `send.analytics`; `core` for the 15 core tools; or `dynamic`, on its own, to start with the core tools and let the model load other toolsets on demand. See [Tags and Toolsets](mailgun-capabilities.md#tags-and-toolsets) for every value.
+
+The Codex package forwards `MAILGUN_API_REGION` and `MAILGUN_MCP_TAGS` from the environment Codex was started in, so Codex users can export them without editing the installed config.
 
 ## Local MCP Development Override
 
