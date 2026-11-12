@@ -49,6 +49,8 @@ For EU accounts or scoped tool sets, edit the installed platform MCP config to a
 
 Install from the Cursor plugin marketplace when published, or add this repository as a marketplace source in Cursor and install `mailgun-cursor`.
 
+For a step-by-step walkthrough, see [Get Started with Mailgun MCP and Skills in Cursor Marketplace](https://help.mailgun.com/hc/en-us/articles/56851546909979-Get-Started-with-Mailgun-MCP-and-Skills-in-Cursor-Marketplace).
+
 The Cursor package includes:
 
 - Mailgun MCP config at `plugins/mailgun-cursor/mcp.json`.
