@@ -2,6 +2,8 @@
 
 This package installs Mailgun workflows into Cursor.
 
+For setup instructions, see [Get Started with Mailgun MCP and Skills in Cursor Marketplace](https://help.mailgun.com/hc/en-us/articles/56851546909979-Get-Started-with-Mailgun-MCP-and-Skills-in-Cursor-Marketplace).
+
 ## Includes
 
 - MCP server config: `mcp.json`
