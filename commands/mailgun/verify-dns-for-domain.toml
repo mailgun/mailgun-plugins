@@ -1,0 +1,5 @@
+description = "Verify Mailgun DNS records for a domain"
+
+prompt = """
+Ask for domain and region if missing. Check Mailgun domain status and DNS verification. Report SPF, DKIM, MX, and tracking records with expected value, current state, and action needed. Do not create, delete, or update domain configuration without explicit confirmation.
+"""
