@@ -22,7 +22,7 @@ Explain:
 - `MAILGUN_API_KEY` is required. The plugin forwards it from the environment Codex was started in, so CLI users should export it in their shell profile and restart Codex.
 - The ChatGPT and Codex desktop apps do not read shell profile exports when launched from the Dock or Finder. On macOS, desktop users should run `launchctl setenv MAILGUN_API_KEY "<key>"` in a terminal, then fully quit and reopen the app. The value lasts until logout.
 - The plugin also forwards `MAILGUN_API_REGION` and `MAILGUN_MCP_TAGS` when they are set. When unset, the MCP server defaults to the `us` region and exposes all tags.
-- Valid tags are `send`, `validate`, `optimize`, and `inspect`.
+- Valid values are the products `send`, `validate`, `optimize`, and `inspect`, Send toolsets such as `send.templates` or `send.analytics`, `core`, `all`, and `dynamic`. A tool loads if it matches any listed value. `dynamic` must be used on its own.
 - Per-project overrides belong under `[plugins."mailgun-codex@mailgun".mcp_servers.mailgun]` in `.codex/config.toml`, for example `enabled_tools` or `default_tools_approval_mode`.
 
 Show the user the variables to export. Do not ask them to paste the secret into chat.
