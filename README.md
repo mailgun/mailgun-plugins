@@ -32,7 +32,7 @@ GitHub Actions is enabled for this repository:
 This repo currently pins plugin MCP startup commands to:
 
 ```bash
-npx -y @mailgun/mcp-server@2.1.3
+npx -y @mailgun/mcp-server@2.3.1
 ```
 
 Required environment:
@@ -47,7 +47,9 @@ For EU accounts or scoped tool sets, edit the installed platform MCP config to a
 
 ### Cursor
 
-Install from the Cursor plugin marketplace when published, or add this repository as a marketplace source in Cursor and install `mailgun-cursor`.
+Install from the Cursor plugin marketplace, or add this repository as a marketplace source in Cursor and install `mailgun-cursor`.
+
+For a step-by-step walkthrough, see [Get Started with Mailgun MCP and Skills in Cursor Marketplace](https://help.mailgun.com/hc/en-us/articles/56851546909979-Get-Started-with-Mailgun-MCP-and-Skills-in-Cursor-Marketplace).
 
 The Cursor package includes:
 
