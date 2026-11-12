@@ -2,7 +2,7 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(new URL("..", import.meta.url).pathname);
-const MCP_VERSION = "2.1.3";
+const MCP_VERSION = "2.3.1";
 const failures = [];
 
 const exists = async (file) => {
