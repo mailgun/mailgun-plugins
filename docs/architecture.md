@@ -37,9 +37,13 @@ Run `npm run sync` after editing shared content. CI runs `npm run check:sync` so
 
 ## Gemini Distribution
 
-Gemini CLI expects `gemini-extension.json` at the extension repository root. Because this repository also hosts Cursor and Claude marketplace roots, Gemini source remains under `plugins/mailgun-gemini` and `npm run build:gemini` creates a Gemini extension artifact at `dist/gemini/mailgun-gemini`.
+Gemini CLI expects `gemini-extension.json` at the root of the extension repository or release archive. Because this repository also hosts Cursor and Claude marketplace roots, Gemini source remains under `plugins/mailgun-gemini` and `npm run build:gemini` stages the extension at `dist/gemini`.
 
-The `Publish Gemini Extension Branch` GitHub Actions workflow publishes that artifact to the `gemini-extension` branch for public installation.
+The `Publish Gemini Extension Branch` GitHub Actions workflow publishes that directory to the `gemini-extension` branch, and each GitHub Release attaches it as archives Gemini CLI can install directly.
+
+## Release Packaging
+
+`npm run build` stages the Claude and Gemini packages under `dist/<platform>` and zips each one into `dist/release` with its manifest at the archive root. The `Release` workflow runs the same build on `v*` tags and attaches the archives to a GitHub Release. Cursor installs from its marketplace, so it has no archive. See [release-process.md](release-process.md).
 
 ## MCP Startup
 

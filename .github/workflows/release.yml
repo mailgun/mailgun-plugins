@@ -1,0 +1,52 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npm ci --ignore-scripts
+      - run: npm run check:sync
+      - run: npm run validate
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+      - name: Install platform validators
+        run: npm install --global @anthropic-ai/claude-code@2.1.326 @google/gemini-cli@0.68.0
+      - run: npm run build
+      - name: Validate release archives
+        run: |
+          set -euo pipefail
+          version="${GITHUB_REF_NAME#v}"
+          unpacked="$(mktemp -d)"
+          unzip -q "dist/release/mailgun-claude-${version}.zip" -d "$unpacked/claude"
+          unzip -q "dist/release/mailgun-gemini-${version}.zip" -d "$unpacked/gemini"
+          npm run validate:claude -- . plugins/mailgun-claude "$unpacked/claude"
+          gemini extensions validate "$unpacked/gemini"
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          prerelease=()
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then prerelease=(--prerelease); fi
+          gh release create "$GITHUB_REF_NAME" dist/release/* --generate-notes --verify-tag "${prerelease[@]}"
+
+  publish-gemini-extension:
+    needs: release
+    if: ${{ !contains(github.ref_name, '-') }}
+    permissions:
+      contents: write
+    uses: ./.github/workflows/publish-gemini-extension.yml

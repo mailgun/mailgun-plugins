@@ -9,9 +9,12 @@
     "sync": "node scripts/sync-shared.mjs",
     "check:sync": "node scripts/check-sync.mjs",
     "check:mcp-version": "node scripts/check-mcp-version.mjs",
-    "build:gemini": "node scripts/build-gemini-extension.mjs",
+    "build": "node scripts/build-packages.mjs",
+    "build:gemini": "node scripts/build-packages.mjs gemini",
+    "bump": "node scripts/bump-version.mjs",
     "validate": "node scripts/validate.mjs",
-    "test": "npm run check:sync && npm run validate && npm run build:gemini",
+    "validate:claude": "node scripts/validate-claude.mjs",
+    "test": "npm run check:sync && npm run validate && npm run build",
     "mcp:tags": "npx -y @mailgun/mcp-server@2.3.1 --list-tags"
   },
   "engines": {
