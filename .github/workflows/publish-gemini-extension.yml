@@ -1,6 +1,7 @@
 name: Publish Gemini Extension Branch
 
 on:
+  workflow_call:
   workflow_dispatch:
   push:
     branches:
@@ -8,7 +9,8 @@ on:
     paths:
       - "plugins/mailgun-gemini/**"
       - "shared/**"
-      - "scripts/build-gemini-extension.mjs"
+      - "scripts/build-packages.mjs"
+      - "scripts/lib/**"
       - "scripts/check-sync.mjs"
       - "scripts/validate.mjs"
       - "package.json"
@@ -21,6 +23,9 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    concurrency:
+      group: publish-gemini-extension
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -41,9 +46,9 @@ jobs:
           git switch --orphan gemini-extension
           git rm -rf . >/dev/null 2>&1 || true
           find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          cp -R "${GITHUB_WORKSPACE}/dist/gemini/mailgun-gemini/." "$WORKTREE"/
+          cp -R "${GITHUB_WORKSPACE}/dist/gemini/." "$WORKTREE"/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Publish Gemini extension from ${GITHUB_SHA}"
+          git commit -m "Publish Gemini extension from ${GITHUB_REF_NAME} (${GITHUB_SHA})"
           git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" gemini-extension

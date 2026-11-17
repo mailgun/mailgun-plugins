@@ -9,13 +9,21 @@ This package installs Mailgun workflows into Gemini CLI.
 - Skills: `skills/`
 - TOML commands: `commands/mailgun/`
 
-## Configure
+## Install
 
-Install from the generated extension branch:
+Install the latest release, or add `--ref v<version>` to pin one:
+
+```bash
+gemini extensions install https://github.com/mailgun/mailgun-plugins
+```
+
+Or install from the generated extension branch, which tracks `main`, and answer yes when Gemini offers to fall back to `git clone`:
 
 ```bash
 gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemini-extension
 ```
+
+## Configure
 
 Use Gemini extension settings for:
 
