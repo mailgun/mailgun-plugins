@@ -48,6 +48,8 @@ If the workflow fails, update the pinned version with the checklist above. The n
 
 Cursor and Claude marketplace publication usually happens outside this repository. Keep manifests complete and validated so a publisher can submit the repo without local surgery.
 
+Codex installs from the repo marketplace at `.agents/plugins/marketplace.json`. Bump the version in `plugins/mailgun-codex/.codex-plugin/plugin.json` when its content changes so Codex caches the new version. Its `.mcp.json` points at the hosted Docs MCP, so MCP server version bumps do not touch it.
+
 Gemini CLI installs from a repository root containing `gemini-extension.json`. This repo keeps Gemini source under `plugins/mailgun-gemini`, builds `dist/gemini/mailgun-gemini`, and publishes that directory to the `gemini-extension` branch. Users install with:
 
 ```bash

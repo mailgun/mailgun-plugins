@@ -35,6 +35,8 @@ flowchart LR
 
 Run `npm run sync` after editing shared content. CI runs `npm run check:sync` so generated platform copies cannot drift silently.
 
+The Codex package is the exception. It connects to the hosted Mailgun Docs MCP rather than `@mailgun/mcp-server`, so sync does not copy the shared account skills into it, and its skills are authored in `plugins/mailgun-codex/skills`.
+
 ## Gemini Distribution
 
 Gemini CLI expects `gemini-extension.json` at the extension repository root. Because this repository also hosts Cursor and Claude marketplace roots, Gemini source remains under `plugins/mailgun-gemini` and `npm run build:gemini` creates a Gemini extension artifact at `dist/gemini/mailgun-gemini`.

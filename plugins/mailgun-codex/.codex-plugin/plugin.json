@@ -1,0 +1,35 @@
+{
+  "name": "mailgun-codex",
+  "version": "0.1.2",
+  "description": "Codex plugin that connects to the Mailgun Docs MCP for API reference, documentation search, and integration code.",
+  "author": {
+    "name": "Mailgun",
+    "email": "developers@mailgun.com",
+    "url": "https://github.com/mailgun"
+  },
+  "homepage": "https://documentation.mailgun.com/",
+  "repository": "https://github.com/mailgun/mailgun-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["mailgun", "email", "api", "documentation", "webhooks", "mcp", "codex"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Mailgun",
+    "shortDescription": "Build with the Mailgun API using the official docs",
+    "longDescription": "Connects Codex to the Mailgun Docs MCP so it can look up endpoints, parameters, authentication, and guides from the official Mailgun documentation, then write and review code that sends email, manages domains, handles webhooks, and validates addresses. The Docs MCP is public and needs no API key; it does not access your Mailgun account.",
+    "developerName": "Mailgun",
+    "category": "Developer Tools",
+    "capabilities": ["Read"],
+    "websiteURL": "https://www.mailgun.com/",
+    "privacyPolicyURL": "https://www.mailgun.com/legal/privacy-policy/",
+    "termsOfServiceURL": "https://www.mailgun.com/legal/terms/",
+    "defaultPrompt": [
+      "Add Mailgun email sending to this project",
+      "Verify Mailgun webhook signatures in my handler",
+      "Which Mailgun endpoint returns delivery events for a domain?"
+    ],
+    "brandColor": "#F04E23",
+    "composerIcon": "./assets/mailgun-icon.png",
+    "logo": "./assets/mailgun-icon.png"
+  }
+}
