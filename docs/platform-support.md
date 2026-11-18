@@ -33,7 +33,7 @@ gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemin
 
 ## Codex
 
-The Codex package is docs only for now. Codex reads the repo marketplace at `.agents/plugins/marketplace.json` and the manifest at `plugins/mailgun-codex/.codex-plugin/plugin.json`. Its `.mcp.json` points at the hosted Mailgun Docs MCP (`https://documentation.mailgun.com/mcp`), which needs no API key and has no account access, so the package ships its own `mailgun-docs-lookup` and `mailgun-api-integration` skills instead of the shared account skills. It has no commands or rules.
+The Codex package is docs only for now. Codex reads the repo marketplace at `.agents/plugins/marketplace.json` and the manifest at `plugins/mailgun-codex/.codex-plugin/plugin.json`. Its `.mcp.json` points at the hosted Mailgun Docs MCP (`https://documentation.mailgun.com/mcp`), which needs no API key and has no account access, so the package ships the Codex-only `mailgun-docs-lookup` and `mailgun-api-integration` skills from `shared/codex/skills` instead of the shared account skills. `.mcp.json` disables the server's `submit-feedback` tool, its only tool that writes, so the plugin stays read-only. It has no commands or rules.
 
 Install from GitHub:
 

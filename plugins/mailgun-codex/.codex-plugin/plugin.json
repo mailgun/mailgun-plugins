@@ -15,12 +15,13 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Mailgun",
-    "shortDescription": "Build with the Mailgun API using the official docs",
+    "shortDescription": "Build with the Mailgun API",
     "longDescription": "Connects Codex to the Mailgun Docs MCP so it can look up endpoints, parameters, authentication, and guides from the official Mailgun documentation, then write and review code that sends email, manages domains, handles webhooks, and validates addresses. The Docs MCP is public and needs no API key; it does not access your Mailgun account.",
     "developerName": "Mailgun",
     "category": "Developer Tools",
     "capabilities": ["Read"],
     "websiteURL": "https://www.mailgun.com/",
+    "supportURL": "https://help.mailgun.com/",
     "privacyPolicyURL": "https://www.mailgun.com/legal/privacy-policy/",
     "termsOfServiceURL": "https://www.mailgun.com/legal/terms/",
     "defaultPrompt": [

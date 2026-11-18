@@ -139,9 +139,21 @@ if (codexManifest.mcpServers) await assertPath(codexDir, codexManifest.mcpServer
 for (const asset of [codexManifest.interface?.composerIcon, codexManifest.interface?.logo].filter(Boolean)) {
   await assertPath(codexDir, asset, "Codex interface asset");
 }
+// OpenAI plugin directory submission limits.
+requireFields(codexManifest.interface ?? {}, ["displayName", "shortDescription", "longDescription", "developerName", "category", "capabilities", "websiteURL", "supportURL", "privacyPolicyURL", "termsOfServiceURL"], "Codex plugin interface");
+for (const field of ["displayName", "shortDescription"]) {
+  if ((codexManifest.interface?.[field]?.length ?? 0) > 30) {
+    failures.push(`Codex plugin interface.${field} must be 30 characters or fewer for directory submission`);
+  }
+}
 const codexServers = (await readJson(path.join(codexDir, ".mcp.json"))).mcpServers ?? {};
-if (codexServers["mailgun-docs"]?.type !== "http" || codexServers["mailgun-docs"]?.url !== DOCS_MCP_URL) {
+const docsServer = codexServers["mailgun-docs"];
+if (docsServer?.type !== "http" || docsServer?.url !== DOCS_MCP_URL) {
   failures.push(`plugins/mailgun-codex/.mcp.json must define mailgun-docs as an http server at ${DOCS_MCP_URL}`);
+}
+// submit-feedback is the Docs MCP's only tool that writes; the plugin is read-only.
+if (docsServer?.disabled_tools?.includes("submit-feedback") !== true) {
+  failures.push("plugins/mailgun-codex/.mcp.json must disable the submit-feedback tool");
 }
 if (Object.keys(codexServers).length !== 1) {
   failures.push("plugins/mailgun-codex/.mcp.json should only define the mailgun-docs server");
@@ -164,6 +176,7 @@ for (const dir of [
   "plugins/mailgun-cursor/skills",
   "plugins/mailgun-claude/skills",
   "plugins/mailgun-gemini/skills",
+  "shared/codex/skills",
   "plugins/mailgun-codex/skills"
 ]) {
   await validateSkills(dir);

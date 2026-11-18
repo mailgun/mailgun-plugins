@@ -35,7 +35,7 @@ flowchart LR
 
 Run `npm run sync` after editing shared content. CI runs `npm run check:sync` so generated platform copies cannot drift silently.
 
-The Codex package is the exception. It connects to the hosted Mailgun Docs MCP rather than `@mailgun/mcp-server`, so sync does not copy the shared account skills into it, and its skills are authored in `plugins/mailgun-codex/skills`.
+The Codex package is the exception. It connects to the hosted Mailgun Docs MCP rather than `@mailgun/mcp-server`, so sync copies the Codex-only skills in `shared/codex/skills` into it instead of the shared account skills.
 
 ## Gemini Distribution
 
