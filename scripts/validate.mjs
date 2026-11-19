@@ -3,6 +3,7 @@ import path from "node:path";
 
 const root = path.resolve(new URL("..", import.meta.url).pathname);
 const MCP_VERSION = "2.3.1";
+const DOCS_MCP_URL = "https://documentation.mailgun.com/mcp";
 const failures = [];
 
 const exists = async (file) => {
@@ -119,6 +120,45 @@ if (claudeManifest.category !== undefined) {
   failures.push("Claude plugin manifest must not include category; put category on the marketplace entry");
 }
 
+const codexMarketplace = await readJson(path.join(root, ".agents", "plugins", "marketplace.json"));
+requireFields(codexMarketplace, ["name", "plugins"], "Codex marketplace");
+const codexEntry = codexMarketplace.plugins?.find((plugin) => plugin.name === "mailgun-codex");
+if (!codexEntry) failures.push("Codex marketplace missing mailgun-codex");
+if (codexEntry && !(await exists(path.resolve(root, codexEntry.source?.path ?? "")))) {
+  failures.push(`Codex marketplace source does not exist: ${codexEntry.source?.path}`);
+}
+if (codexEntry && (!codexEntry.policy?.installation || !codexEntry.policy?.authentication || !codexEntry.category)) {
+  failures.push("Codex marketplace entry must include policy.installation, policy.authentication, and category");
+}
+
+const codexDir = path.join(root, "plugins", "mailgun-codex");
+const codexManifest = await readJson(path.join(codexDir, ".codex-plugin", "plugin.json"));
+requireFields(codexManifest, ["name", "version", "description", "author", "license", "keywords", "skills", "mcpServers", "interface"], "Codex plugin");
+if (codexManifest.skills) await assertPath(codexDir, codexManifest.skills, "Codex skills");
+if (codexManifest.mcpServers) await assertPath(codexDir, codexManifest.mcpServers, "Codex MCP config");
+for (const asset of [codexManifest.interface?.composerIcon, codexManifest.interface?.logo].filter(Boolean)) {
+  await assertPath(codexDir, asset, "Codex interface asset");
+}
+// OpenAI plugin directory submission limits.
+requireFields(codexManifest.interface ?? {}, ["displayName", "shortDescription", "longDescription", "developerName", "category", "capabilities", "websiteURL", "supportURL", "privacyPolicyURL", "termsOfServiceURL"], "Codex plugin interface");
+for (const field of ["displayName", "shortDescription"]) {
+  if ((codexManifest.interface?.[field]?.length ?? 0) > 30) {
+    failures.push(`Codex plugin interface.${field} must be 30 characters or fewer for directory submission`);
+  }
+}
+const codexServers = (await readJson(path.join(codexDir, ".mcp.json"))).mcpServers ?? {};
+const docsServer = codexServers["mailgun-docs"];
+if (docsServer?.type !== "http" || docsServer?.url !== DOCS_MCP_URL) {
+  failures.push(`plugins/mailgun-codex/.mcp.json must define mailgun-docs as an http server at ${DOCS_MCP_URL}`);
+}
+// submit-feedback is the Docs MCP's only tool that writes; the plugin is read-only.
+if (docsServer?.disabled_tools?.includes("submit-feedback") !== true) {
+  failures.push("plugins/mailgun-codex/.mcp.json must disable the submit-feedback tool");
+}
+if (Object.keys(codexServers).length !== 1) {
+  failures.push("plugins/mailgun-codex/.mcp.json should only define the mailgun-docs server");
+}
+
 const gemini = await readJson(path.join(root, "plugins/mailgun-gemini/gemini-extension.json"));
 requireFields(gemini, ["name", "version", "description", "author", "license", "mcpServers", "settings"], "Gemini extension");
 if (gemini.mcpServers?.mailgun?.args?.includes(`@mailgun/mcp-server@${MCP_VERSION}`) !== true) {
@@ -135,7 +175,9 @@ for (const dir of [
   "shared/skills",
   "plugins/mailgun-cursor/skills",
   "plugins/mailgun-claude/skills",
-  "plugins/mailgun-gemini/skills"
+  "plugins/mailgun-gemini/skills",
+  "shared/codex/skills",
+  "plugins/mailgun-codex/skills"
 ]) {
   await validateSkills(dir);
 }

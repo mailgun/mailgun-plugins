@@ -9,6 +9,7 @@ Mailgun Plugins helps developers use Mailgun from agent tools like Cursor, Claud
 | Cursor | `plugins/mailgun-cursor` | Full | Marketplace manifest, plugin manifest, MCP config, skills, rules, and commands. |
 | Claude Code / Claude compatible | `plugins/mailgun-claude` | Supported | Claude marketplace/plugin manifest, MCP config, skills, and commands. Rules are included as guidance files where supported by the client. |
 | Gemini CLI | `plugins/mailgun-gemini` | Supported | Gemini extension manifest, MCP server config, settings metadata, skills, and TOML commands. |
+| Codex | `plugins/mailgun-codex` | Docs only | Codex plugin manifest, the hosted Mailgun Docs MCP, and API reference and integration skills. No account tools yet. |
 
 See [docs/platform-support.md](docs/platform-support.md) for the detailed matrix.
 
@@ -73,6 +74,17 @@ gemini extensions install https://github.com/mailgun/mailgun-plugins --ref gemin
 ```
 
 The source package is under `plugins/mailgun-gemini` and includes `gemini-extension.json`, skills, and TOML commands. Gemini requires `gemini-extension.json` at the repository root, so GitHub Actions publishes the `gemini-extension` branch from that package.
+
+### Codex
+
+Add this repository as a Codex plugin marketplace, then install `mailgun-codex`:
+
+```bash
+codex plugin marketplace add mailgun/mailgun-plugins
+codex plugin add mailgun-codex@mailgun
+```
+
+The Codex package connects to the hosted [Mailgun Docs MCP](https://documentation.mailgun.com/mcp) instead of `@mailgun/mcp-server`. It helps Codex look up the Mailgun API and write integration code, needs no API key, and cannot read or change a Mailgun account. Account workflows will follow once a hosted Mailgun MCP is available.
 
 ## Local Development
 

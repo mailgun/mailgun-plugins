@@ -27,6 +27,9 @@ await Promise.all([
   copyDir(path.join(root, "shared", "skills"), path.join(root, "plugins", "mailgun-cursor", "skills")),
   copyDir(path.join(root, "shared", "skills"), path.join(root, "plugins", "mailgun-claude", "skills")),
   copyDir(path.join(root, "shared", "skills"), path.join(root, "plugins", "mailgun-gemini", "skills")),
+  // Codex only: the Codex package uses the Docs MCP, which has no account tools, so it
+  // gets its own skills instead of shared/skills.
+  copyDir(path.join(root, "shared", "codex", "skills"), path.join(root, "plugins", "mailgun-codex", "skills")),
   copyDir(path.join(root, "shared", "rules"), path.join(root, "plugins", "mailgun-cursor", "rules")),
   copyDir(path.join(root, "shared", "rules"), path.join(root, "plugins", "mailgun-claude", "rules")),
   copyCommandDir("cursor"),
@@ -35,7 +38,7 @@ await Promise.all([
 ]);
 
 const synced = [];
-for (const platform of ["cursor", "claude", "gemini"]) {
+for (const platform of ["cursor", "claude", "gemini", "codex"]) {
   const dir = path.join(root, "plugins", `mailgun-${platform}`, "skills");
   synced.push(`${platform}:${(await readdir(dir)).length} skills`);
 }

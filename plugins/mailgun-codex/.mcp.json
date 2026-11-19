@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mailgun-docs": {
+      "type": "http",
+      "url": "https://documentation.mailgun.com/mcp",
+      "disabled_tools": ["submit-feedback"]
+    }
+  }
+}
