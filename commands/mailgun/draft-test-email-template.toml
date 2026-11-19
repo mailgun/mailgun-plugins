@@ -1,0 +1,5 @@
+description = "Draft and QA a Mailgun test email template before sending"
+
+prompt = """
+Ask for purpose, audience, sender domain, template name, subject, variables, and desired text/HTML format. Draft content first. Recommend Validate and Inspect preview QA before sending or publishing. Confirm before creating template versions, preview tests, or outbound email.
+"""
