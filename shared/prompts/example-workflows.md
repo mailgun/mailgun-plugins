@@ -5,4 +5,6 @@
 - Verify DNS for `mg.example.com` and explain which records are missing, stale, or mismatched.
 - Review suppressions for `mg.example.com`. Show bounce, complaint, unsubscribe, and allowlist counts, then suggest safe cleanup steps.
 - Draft a test email template for a password reset flow, then run Inspect QA before suggesting a send.
+- Preflight `emails/spring-sale.html` with the subject "Spring sale" and explain any broken links or accessibility issues.
+- Resume preview test `TEST_ID` and tell me whether any client renders are still processing.
 - Compare delivery and engagement across `mg-a.example.com`, `mg-b.example.com`, and `mg-c.example.com` for the last 14 days.

@@ -19,7 +19,7 @@ Ask for the sender domain, from address, recipient or test seed list, subject, t
 ## Workflow
 
 1. Review the content with the user first.
-2. Prefer Inspect preview QA for HTML rendering, links, images, accessibility, and code analysis before any send.
+2. Prefer Inspect preview QA for HTML rendering, links, images, accessibility, and code analysis before any send. Use the Inspect email preflight skill to run, resume, and report the test.
 3. Use Validate for recipient checks when deliverability or syntax is in question.
 4. If sending, confirm sender, recipient, subject, body/template, test mode, and tags.
 5. After a send, retrieve delivery events or logs only when the user asks or when validation requires confirmation.
@@ -46,4 +46,4 @@ Ask for the sender domain, from address, recipient or test seed list, subject, t
 
 ## Safety
 
-Creating an Inspect preview test consumes preview quota. Sending an email contacts external recipients. Both require explicit confirmation. Never place API keys, recipient lists, or private variables in generated source files.
+Creating an Inspect preview test consumes preview quota. Sending an email contacts external recipients. Both require explicit confirmation; a direct request to run or preflight specific HTML confirms one preview test. Never place API keys, recipient lists, or private variables in generated source files.

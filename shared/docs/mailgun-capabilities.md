@@ -5,10 +5,10 @@ The Mailgun plugin packages rely on `@mailgun/mcp-server` for all Mailgun API ex
 ## MCP Server
 
 - Package: `@mailgun/mcp-server`
-- Compatible version pinned by this repo: `2.3.1`
+- Compatible version pinned by this repo: `2.4.0`
 - Transport: local stdio
 - Executable: `mailgun-mcp-server`
-- Default launch: `npx -y @mailgun/mcp-server@2.3.1`
+- Default launch: `npx -y @mailgun/mcp-server@2.4.0`
 
 ## Environment
 
@@ -24,6 +24,16 @@ The Mailgun plugin packages rely on `@mailgun/mcp-server` for all Mailgun API ex
 - `optimize`: inbox placement and seed test results.
 - `inspect`: email preview rendering, checks, preview clients, and Email Preview QA composite workflows.
 
+## Email Preview QA
+
+The `inspect` tag exposes two composite tools and the read primitives behind them:
+
+- `run_email_preview_qa` creates one remote preview test from rendered HTML and a subject, polls for up to 45 seconds, and returns counts, per check status, and result references. It consumes preview quota, does not send email, and never retries the create.
+- `get_email_preview_qa` resumes and summarizes an existing test by `test_id`. It never creates a test.
+- Read primitives: `list_preview_tests`, `get_preview_test_status`, `get_preview_client_result`, `list_preview_clients`, `get_link_validation_result`, `get_image_validation_result`, `get_accessibility_result`, `get_code_analysis_result`, and the older `get_preview_result`.
+
+The composites do not return a pass/fail verdict. The `inspect-email-preflight` skill covers the create and resume rules, check and client selection, and reporting.
+
 ## Core Workflows
 
 - Send and retrieve email, including stored message retrieval and resend.
@@ -38,6 +48,6 @@ The Mailgun plugin packages rely on `@mailgun/mcp-server` for all Mailgun API ex
 ## Safety Defaults
 
 - Start with diagnostics before making any account change.
-- Ask before sending email, creating preview tests, editing DNS settings, updating tracking, mutating suppressions, changing webhooks, editing templates, or touching account/admin settings.
+- Ask before sending email, creating preview tests (a direct request to run or preflight specific HTML confirms one test), editing DNS settings, updating tracking, mutating suppressions, changing webhooks, editing templates, or touching account/admin settings.
 - Use the narrowest practical tag set. For example, use `MAILGUN_MCP_TAGS=inspect` for preview QA, `validate` for address checks, or `send,inspect` for sending plus preflight.
 - Treat event logs, message bodies, stored messages, recipients, and template content as sensitive customer data.
