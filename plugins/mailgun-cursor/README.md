@@ -36,4 +36,5 @@ The packaged config uses the MCP server defaults: US region and all Mailgun tool
 - `verify-dns-for-domain`
 - `review-suppressions-for-domain`
 - `draft-test-email-template`
+- `preflight-email-html`
 - `compare-delivery-across-domains`

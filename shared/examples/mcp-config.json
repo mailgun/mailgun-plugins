@@ -2,7 +2,7 @@
   "mcpServers": {
     "mailgun": {
       "command": "npx",
-      "args": ["-y", "@mailgun/mcp-server@2.3.1"],
+      "args": ["-y", "@mailgun/mcp-server@2.4.0"],
       "env": {
         "MAILGUN_API_KEY": "${MAILGUN_API_KEY}",
         "MAILGUN_API_REGION": "us",

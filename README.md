@@ -1,6 +1,6 @@
 # Mailgun Plugins
 
-Mailgun Plugins helps developers use Mailgun from agent tools like Cursor, Claude Code, and Gemini CLI. Each package connects the agent to [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server) and adds practical workflows for common Mailgun tasks, including domain setup, delivery diagnostics, suppressions, template QA, and platform operations.
+Mailgun Plugins helps developers use Mailgun from agent tools like Cursor, Claude Code, and Gemini CLI. Each package connects the agent to [`@mailgun/mcp-server`](https://github.com/mailgun/mailgun-mcp-server) and adds practical workflows for common Mailgun tasks, including domain setup, delivery diagnostics, suppressions, template QA, email preview QA, and platform operations.
 
 ## Supported Platforms
 
@@ -33,7 +33,7 @@ GitHub Actions is enabled for this repository:
 This repo currently pins plugin MCP startup commands to:
 
 ```bash
-npx -y @mailgun/mcp-server@2.3.1
+npx -y @mailgun/mcp-server@2.4.0
 ```
 
 Required environment:
@@ -55,9 +55,9 @@ For a step-by-step walkthrough, see [Get Started with Mailgun MCP and Skills in 
 The Cursor package includes:
 
 - Mailgun MCP config at `plugins/mailgun-cursor/mcp.json`.
-- Fifteen skills.
+- Sixteen skills, including Inspect email preflight for Email Preview QA on rendered HTML.
 - Safety rules in `plugins/mailgun-cursor/rules`.
-- Commands for domain health, bounces, DNS, suppressions, templates, and reporting across domains.
+- Commands for domain health, bounces, DNS, suppressions, templates, email preview QA, and reporting across domains.
 
 ### Claude Code
 
